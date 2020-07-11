@@ -32,4 +32,5 @@ systemctl status docker
 ![](https://github.com/LiamLin07/make-environment/img/linux/docker_info.png)
 
 5.查看 docker 镜像配置状态
+输入`docker info`，确认阿里云加速镜像是否配置成功
 ![](https://github.com/LiamLin07/make-environment/img/linux/docker_status.png)

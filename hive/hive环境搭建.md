@@ -15,3 +15,22 @@
 1. 下载 hadoop 安装包
    可以到附近的镜像进行下载，镜像站点可以在下面的网址查到
    https://mirrors.tuna.tsinghua.edu.cn/apache/hive/
+
+2. 解压安装包
+
+```shell
+  tar -xzvf hive-x.y.z.tar.gz
+```
+
+3. 添加 Hive 环境变量
+
+```shell
+  cd hive-x.y.z
+  export HIVE_HOME={{pwd}}
+```
+
+添加环境变量
+
+```shell
+export PATH=$HIVE_HOME/bin:$PATH
+```
