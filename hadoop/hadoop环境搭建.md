@@ -44,4 +44,4 @@ source /etc/profile
 ```
 
 6.输入 hadoop，见到如下截图则说明安装成功了
-![成功截图](../img/hadoop/hadoop_success.png)
+![成功截图](https://github.com/LiamLin07/make-environment/img/hadoop/hadoop_success.png)
