@@ -24,7 +24,49 @@ vim etc/hadoop/hadoop-env.sh
 
 找到`JAVA_HOME`配置并修改
 
-5. 配置`HADOOP_HOME`
+![](https://tva1.sinaimg.cn/large/007S8ZIlgy1ggpolwf9enj309g01ewef.jpg)
+
+5. 修改 core-site.xml 配置及 hdfs-site.xml 配置
+   etc/hadoop/core-site.xml:
+
+```xml
+<property>
+  <name>fs.defaultFS</name>
+  <value>hdfs://localhost:9000</value>
+</property>
+```
+
+etc/hadoop/hdfs-site.xml:
+
+```xml
+<property>
+  <name>dfs.replication</name>
+  <value>1</value>
+</property>
+<property>
+  <name>hadoop.tmp.dir</name>
+  <value>/root/app/tmp</value>
+</property>
+```
+
+6.启动 HDFS
+第一次执行的时候一定要格式化文件系统，不要重复执行.执行命令
+
+```
+hdfs namenode -format
+```
+
+启动集群
+
+```
+sbin/start-dfs.sh
+```
+
+启动完毕后使用 jps 查看进程，如果看到下面的截图，说明启动成功了
+![](https://tva1.sinaimg.cn/large/007S8ZIlgy1ggpr4b4x1fj306p01y74a.jpg)
+
+7. 配置`HADOOP_HOME`
+   配置完 HADOOP_HOME 后续就可以在任意文件夹下执行 hadoop 命令
 
 ```
 vim /etc/profile
@@ -42,6 +84,3 @@ PATH=$PATH:$HADOOP_HOME/bin
 ```
 source /etc/profile
 ```
-
-6.输入 hadoop，见到如下截图则说明安装成功了
-![成功截图](https://github.com/LiamLin07/make-environment/img/hadoop/hadoop_success.png)
