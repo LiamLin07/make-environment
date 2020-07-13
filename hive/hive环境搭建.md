@@ -53,8 +53,37 @@ export PATH=$HIVE_HOME/bin:$PATH
    ```
 
    配置 mysql 作为数据源，需要修改四个配置`javax.jdo.option.ConnectionURL`,`javax.jdo.option.ConnectionDriverName`,`javax.jdo.option.ConnectionUserName`以及`javax.jdo.option.ConnectionPassword`
-   修改的配置如下
-   ![](https://tva1.sinaimg.cn/large/007S8ZIlgy1ggq2zv59vtj30vg0e7jtv.jpg)
+   修改的配置如下，hive 中默认是使用`derby`来管理元数据
+
+```xml
+<property>
+  <name>javax.jdo.option.ConnectionURL</name>
+  <value>jdbc:derby:;databaseName=metastore_db;create=true</value>
+  <description>
+    JDBC connect string for a JDBC metastore.
+    To use SSL to encrypt/authenticate the connection, provide database-specific SSL flag in the connection URL.
+    For example, jdbc:postgresql://myhost/db?ssl=true for postgres database.
+  </description>
+</property>
+<property>
+  <name>javax.jdo.option.ConnectionDriverName</name>
+  <value>org.apache.derby.jdbc.EmbeddedDriver</value>
+  <description>Driver class name for a JDBC metastore</description>
+</property>
+<property>
+  <name>javax.jdo.option.ConnectionUserName</name>
+  <value>APP</value>
+  <description>Username to use against metastore database</description>
+</property>
+<property>
+    <name>javax.jdo.option.ConnectionPassword</name>
+    <value>mine</value>
+    <description>password to use against metastore database</description>
+</property>
+```
+
+将配置文件修改为如下截图，使用`mysql`管理元数据
+![](https://tva1.sinaimg.cn/large/007S8ZIlgy1ggq2zv59vtj30vg0e7jtv.jpg)
 
 5. 拷贝 MySQL 驱动包到\$HIVE_HOME/lib
    ![](https://tva1.sinaimg.cn/large/007S8ZIlgy1ggq33wbdw4j30z701mmxh.jpg)
